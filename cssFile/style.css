@@ -1,0 +1,133 @@
+*{
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Tajawal', sans-serif;
+}
+
+body{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: aliceblue;
+}
+.container{
+  width: 1300px;
+  height: 800px;
+  border: 3px solid aliceblue;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  position: relative;
+
+}
+.logo{
+  width: 40px;
+  margin: 30px;
+}
+.nav-bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo--img--text{
+  display: flex;
+   align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.logo--quran{
+ font-weight:700;
+ padding-right: 10px;
+ font-size: 20px;
+}
+.logo--hadith{
+  color: rgba(128, 128, 128, 0.582);
+  font-weight: 500;
+ font-size: 20px;
+}
+.input--search{
+  width: 270px;
+  height: 45px;
+  border: 3px solid #eee;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1.6px;
+  border-radius: 19px;
+  margin-right: 20px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+}
+::placeholder{
+ font-size: 20px;
+ color: rgba(0, 0, 0, 0.504);
+ font-weight: 600px;
+ padding-left: 18px;
+}
+.left--bar{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 360px;
+  width: 90px;
+}
+.menu--bar{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.log--out{
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.left--bar button{
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+}
+.left--bar button img{
+  width: 30px;
+}
+.right--bar{
+  display: flex;
+  flex-direction:column;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  position: absolute;
+  top: 100px;
+  right: 40px;
+  gap: 30px;
+}
+.right--options{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 20px;
+}
+.profile{
+ width: 86px;
+}
+.reading {
+  width: 50px;
+  margin-left:60px;
+}
+.headset{
+  margin-left: 30px;
+}
+.profile--owner{
+  font-size: 20px;
+  font-weight: 600;
+}
+.last--read{
+  font-weight:600;
+  color: rgb(48, 163, 145);
+}
+.sourat--opened{
+  font-weight: bold;
+}
