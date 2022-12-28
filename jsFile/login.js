@@ -13,8 +13,10 @@ const resetBtn = document.querySelector(".reset--btn")
 
 loginBtn.addEventListener("click", function (e)
 {
+  e.preventDefault()
   if (email.value==false)
   {
+    e.preventDefault()
     emailError.textContent = "Email Non Valid!!";
     return false;
   }else if ((passWord.value).lenght < 8)

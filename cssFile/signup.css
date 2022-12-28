@@ -59,6 +59,7 @@ h1{
   border: 4px solid #eee;
   font-size: 16px;
   font-weight: 500;
+ 
 }
 .signup--btn{
   display: flex;
@@ -82,7 +83,7 @@ h1{
   align-self: stretch;
   padding-left: 38px;
 }
-div a{
+.login--link{
   font-size: 25px;
   color: #000;
   font-weight: 600;
@@ -93,4 +94,19 @@ div a{
   padding-left: 20px;
   font-size: 14px !important;
   color: rgba(255, 0, 0, 0.664);
+}
+.signup--link{
+ background-color:rgb(25, 169, 25) ;
+ padding-right: 5px;
+ color: #fff;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ padding:0px 7px;
+ border-radius: 6px;
+ font-weight:600 ;
+ cursor: pointer;
+}
+.back--red{
+ background-color: rgba(255, 0, 0, 0.211);
 }
