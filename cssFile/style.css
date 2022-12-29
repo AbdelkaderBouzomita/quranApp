@@ -159,12 +159,18 @@
 }
 .sort--way {
   display: flex;
-  background-color: #fff;
   border-radius: 7px;
   padding: 7px 16px;
   cursor: pointer;
   margin-top: 22px;
   margin-right: 22px;
+  border: 3px solid rgb(199, 185, 185);
+  font-size: 18px;
+  font-weight: 500;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.back-fff{
+  background-color: #fff;
 }
 .sourah--container {
   display: flex;
