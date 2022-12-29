@@ -52,7 +52,7 @@ loginLink.addEventListener("click", function (e)
   let myHeaders = new Headers();
   myHeaders.append(
     "Authorization",
-    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWNhMGI0NGIxODM5MDdhZjkyNGY3MCIsImlhdCI6MTY3MjI1NzcxNywiZXhwIjoxNjgwMDMzNzE3fQ.7fUs0qDhD8OgELFGYdk75Fe1b3lTA_AcAUG1RYPCVag"
+    `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWNhMGI0NGIxODM5MDdhZjkyNGY3MCIsImlhdCI6MTY3MjI1NzcxNywiZXhwIjoxNjgwMDMzNzE3fQ.7fUs0qDhD8OgELFGYdk75Fe1b3lTA_AcAUG1RYPCVag`
   );
   myHeaders.append("Content-Type", "application/json");
   myHeaders.append(
@@ -77,7 +77,15 @@ loginLink.addEventListener("click", function (e)
     .then((result) => {
       console.log(result);
       console.log(result.status);
-      if (valid === true && result.status == "success") {
+      if (valid === true && result.status == "success")
+      {
+        window.localStorage.token = result.token;
+        window.localStorage.setItem("email",email.value)
+        window.localStorage.setItem("password", passWord.value)
+        //?or you can write
+        //? window.localStorage.email=email.value;
+        //?or 
+        //? window.localStorage["email"]=email.value;
         suc = true;
       }
     })

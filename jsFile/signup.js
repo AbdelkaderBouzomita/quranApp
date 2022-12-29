@@ -97,7 +97,10 @@ signupBtn.addEventListener("click", function (e) {
     .catch((error) => console.log("error", error));
   if (suc === true)
   {
-    
+    window.localStorage.namePerson = namep.value;
+    window.localStorage.password = passWord.value;
+    window.localStorage.email = email.value;
+   
     signupBtn.setAttribute("href", "index.html");
   }
 });
