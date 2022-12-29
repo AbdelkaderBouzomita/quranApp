@@ -1,11 +1,11 @@
-*{
+* {
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
-  font-family: 'Tajawal', sans-serif;
+  font-family: "Tajawal", sans-serif;
 }
 
-body{
+body {
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -13,7 +13,7 @@ body{
   background-color: aliceblue;
 }
 
-.login--container{
+.login--container {
   display: flex;
   flex-direction: column;
   border: 3px solid aliceblue;
@@ -25,33 +25,32 @@ body{
   border-radius: 29px;
   gap: 11px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
- 
 }
 
-.login--title{
+.login--title {
   padding-left: 38px;
   font-size: 28px;
   padding-top: 29px;
   align-self: flex-start;
 }
-.quran{
- font-weight:700;
- padding-right: 10px;
+.quran {
+  font-weight: 700;
+  padding-right: 10px;
 }
-.hadith{
+.hadith {
   color: rgba(128, 128, 128, 0.582);
   font-weight: 500;
 }
-h1{
-  text-align: center; 
+h1 {
+  text-align: center;
   color: rgba(56, 225, 56, 0.834);
 }
-.input p{
+.input p {
   font-size: 20px;
   text-transform: capitalize;
   font-weight: 700;
 }
-.input input{
+.input input {
   height: 34px;
   width: 255px;
   border-radius: 5px;
@@ -60,12 +59,12 @@ h1{
   font-size: 16px;
   font-weight: 500;
 }
-.login--btn{
+.login--btn {
   display: flex;
   justify-content: center;
   gap: 20px;
 }
-.login--btn input{
+.login--btn input {
   color: #fff;
   background-color: rgb(25, 169, 25);
   padding: 5px 15px;
@@ -78,24 +77,24 @@ h1{
   align-items: center;
   cursor: pointer;
 }
-.login--register{
+.login--register {
   align-self: stretch;
   padding-left: 38px;
 }
-div a{
+div a {
   font-size: 20px;
   color: #000;
   font-weight: 600;
 }
-.erreur{
+.erreur {
   padding-top: 5px;
   padding-left: 20px;
   font-size: 14px !important;
   color: rgba(255, 0, 0, 0.664);
 }
-.login--link{
-  background-color:rgb(25, 169, 25);
-  color:#fff;
+.login--link {
+  background-color: rgb(25, 169, 25);
+  color: #fff;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -104,6 +103,6 @@ div a{
   text-decoration: none;
   cursor: pointer;
 }
-.back--red{
- background-color: rgba(255, 0, 0, 0.211);
+.back--red {
+  background-color: rgba(255, 0, 0, 0.211);
 }

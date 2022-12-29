@@ -4,48 +4,39 @@ const confirmPw = document.querySelector(".confirmPass--input");
 const emailError = document.querySelector(".err--email");
 const passWordError = document.querySelector(".err--pass");
 const confirmPassWordError = document.querySelector(".err--confipass");
-const loginLink=document.querySelector(".login--link")
-const resetBtn = document.querySelector(".reset--btn")
-
-
+const loginLink = document.querySelector(".login--link");
+const resetBtn = document.querySelector(".reset--btn");
 
 let suc = false;
-loginLink.addEventListener("click", function (e)
-{
+loginLink.addEventListener("click", function (e) {
   let valid = true;
   if (
     email.value.substring(email.value.indexOf("@")) !== "@gmail.com" ||
     email.value.substring(0, email.value.indexOf("@")).length < 4
-  )
-  {
+  ) {
     valid = false;
 
     emailError.textContent = "email invalid!!";
     email.classList.add("back--red");
-  } else
-  {
+  } else {
     emailError.textContent = "";
     email.classList.remove("back--red");
   }
-  if (passWord.value.length < 8)
-  {
+  if (passWord.value.length < 8) {
     valid = false;
 
     passWordError.textContent = "password invalid!!";
     passWord.classList.add("back--red");
-  } else
-  {
+  } else {
     passWordError.textContent = "";
     passWord.classList.remove("back--red");
   }
-  if (confirmPw.value.trim() === "" || confirmPw.value !== passWord.value)
-  {
+  if (confirmPw.value.trim() === "" || confirmPw.value !== passWord.value) {
     valid = false;
 
     confirmPassWordError.textContent = "password invalid!!";
     confirmPw.classList.add("back--red");
-  } else
-  {
+  } else {
     confirmPassWordError.textContent = "";
     confirmPw.classList.remove("back--red");
   }
@@ -77,24 +68,19 @@ loginLink.addEventListener("click", function (e)
     .then((result) => {
       console.log(result);
       console.log(result.status);
-      if (valid === true && result.status == "success")
-      {
+      if (valid === true && result.status == "success") {
         window.localStorage.token = result.token;
-        window.localStorage.setItem("email",email.value)
-        window.localStorage.setItem("password", passWord.value)
+        window.localStorage.setItem("email", email.value);
+        window.localStorage.setItem("password", passWord.value);
         //?or you can write
         //? window.localStorage.email=email.value;
-        //?or 
+        //?or
         //? window.localStorage["email"]=email.value;
         suc = true;
       }
     })
     .catch((error) => console.log("error", error));
-  if (suc === true)
-  {
+  if (suc === true) {
     loginLink.setAttribute("href", "index.html");
   }
 });
-
-//abdelkader@gmail.com
-//aaabbbccc

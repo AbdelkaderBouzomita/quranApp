@@ -10,7 +10,7 @@ const passWordError = document.querySelector(".err--pass");
 const confirmPassWordError = document.querySelector(".err--confipass");
 const signupBtn = document.querySelector(".signup--link");
 const resetBtn = document.querySelector(".reset--btn");
-let suc=false;
+let suc = false;
 signupBtn.addEventListener("click", function (e) {
   let valid = true;
   if (namep.value.length < 3 || isAlpha(namep.value) == false) {
@@ -90,17 +90,15 @@ signupBtn.addEventListener("click", function (e) {
       console.log(result);
       console.log(result.status);
       if (valid === true && result.status == "success") {
-        suc=true
-        
+        suc = true;
       }
     })
     .catch((error) => console.log("error", error));
-  if (suc === true)
-  {
+  if (suc === true) {
     window.localStorage.namePerson = namep.value;
     window.localStorage.password = passWord.value;
     window.localStorage.email = email.value;
-   
+
     signupBtn.setAttribute("href", "index.html");
   }
 });
@@ -113,8 +111,3 @@ function isAlpha(ch) {
   }
   return true;
 }
-
-// 32424324
-// dkfjkds@gmail.com
-
-// result.message = "success";

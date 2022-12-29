@@ -4,24 +4,6 @@
   padding: 0px;
   font-family: "Tajawal", sans-serif;
 }
-
-/* body{
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: aliceblue;
-} */
-/* .container{
-  width: 1300px;
-  height: 800px;
-  border: 3px solid aliceblue;
-  background-color: #fff;
-  border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  position: relative;
-
-} */
 .logo {
   width: 40px;
   margin: 30px;
@@ -140,7 +122,7 @@
   overflow: scroll;
   width: 1000px;
   height: 600px;
-  border-top-left-radius:33px;
+  border-top-left-radius: 33px;
   border-top-right-radius: 33px;
   position: absolute;
   top: 100px;
@@ -169,7 +151,7 @@
   font-weight: 500;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.back-fff{
+.back-fff {
   background-color: #fff;
 }
 .sourah--container {
@@ -181,10 +163,11 @@
   background-color: #fff;
   border-radius: 11px;
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+  cursor: pointer;
 }
-.sourah--container:hover{
- transform: scale(1.088);
- transition: 0.8s ease;
+.sourah--container:hover {
+  transform: scale(1.088);
+  transition: 0.8s ease;
 }
 .english-meaning {
   height: 100%;
@@ -200,7 +183,6 @@
   align-items: end;
   flex-direction: column;
   margin-right: 9px;
-
 }
 .arabic-meaning i {
   font-size: 23px;
@@ -218,7 +200,6 @@
   font-size: large;
   font-weight: bold;
   margin-bottom: 18px;
-
 }
 .english-meaning span {
   font-size: 18px;
@@ -238,7 +219,6 @@
   font-size: 13px;
   font-weight: 600;
   margin-bottom: 3px;
-
 }
 .arabic-meaning p {
   font-size: 16px;
@@ -246,14 +226,17 @@
   color: rgba(168, 159, 159, 0.609);
   text-transform: capitalize;
 }
-.sourah--grid{
+.sourah--grid {
   display: grid;
   grid-template-columns: auto auto auto auto;
   padding: 10px;
-  row-gap:20px;
+  row-gap: 20px;
 }
 
-.rotation{
+.rotation {
   transform: rotate(180deg);
   transition: 1s;
+}
+.hidden {
+  display: none;
 }
