@@ -106,6 +106,7 @@ h1{
  border-radius: 6px;
  font-weight:600 ;
  cursor: pointer;
+ text-decoration: none;
 }
 .back--red{
  background-color: rgba(255, 0, 0, 0.211);
