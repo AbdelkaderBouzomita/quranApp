@@ -55,6 +55,7 @@
   align-items: center;
   gap: 360px;
   width: 90px;
+  
 }
 .menu--bar {
   display: flex;
@@ -126,7 +127,8 @@
   border-top-right-radius: 33px;
   position: absolute;
   top: 100px;
-  left: 100px;
+  right: 300px;
+  margin: 0 auto;
 }
 .sorted--bar img {
   width: 25px;
