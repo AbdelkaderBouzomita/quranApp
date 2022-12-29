@@ -252,3 +252,8 @@
   padding: 10px;
   row-gap:20px;
 }
+
+.rotation{
+  transform: rotate(180deg);
+  transition: 1s;
+}

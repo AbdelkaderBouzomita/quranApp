@@ -6,8 +6,12 @@ const sortByAyahs = document.querySelector(".sort--by--ayahs");
 const sortByNumber = document.querySelector(".sort--by--number");
 const sortByAlphabes = document.querySelector(".sort--by--alphabes");
 const allSortMethod=document.querySelectorAll(".sort--way")
-
-
+const arrowAyah=document.querySelector(".arrow--sort--ayahs")
+const arrowNumber=document.querySelector(".arrow--sort--number")
+const arrowAlphabes = document.querySelector(".arrow--sort--alphabes");
+const allArrowSort = document.querySelectorAll(".arrow");
+console.log(arrowAlphabes);
+console.log(arrowAyah)
 nameProfile.textContent = window.localStorage.namePerson;
 emailProfile.textContent =
   "@" + window.localStorage.email.substring(0, 4) + "...";
@@ -61,18 +65,23 @@ const alldata = fetch(`https://apitest.khouaja.live./v1/quran`, {
     });
     sortByAlphabes.addEventListener("click", function (e)
     {
+      allArrowSort.forEach(el=> el.classList.remove("rotation"))
       allSortMethod.forEach(el => el.classList.remove("back-fff"));
       sortByAlphabes.classList.add("back-fff")
       
       origin.sort(compare);
       sourahGrid.textContent = "";
       origin.reverse().map(e =>
-      {
-        apendchild(e)
-      })
+        {
+          apendchild(e)
+        })
+        arrowAlphabes.classList.add("rotation");
     })
     sortByNumber.addEventListener("click", function (e)
     {
+      allArrowSort.forEach((el) => el.classList.remove("rotation"));
+
+       arrowNumber.classList.add("rotation");
       allSortMethod.forEach(el => el.classList.remove("back-fff"));
       sortByNumber.classList.add("back-fff")
       sourahGrid.textContent = "";
@@ -84,11 +93,14 @@ const alldata = fetch(`https://apitest.khouaja.live./v1/quran`, {
     })
     sortByAyahs.addEventListener("click", function (e)
     {
+      allArrowSort.forEach((el) => el.classList.remove("rotation"));
+
+       arrowAyah.classList.add("rotation");
       allSortMethod.forEach((el) => el.classList.remove("back-fff"));
       sortByAyahs.classList.add("back-fff");
       sourahGrid.textContent = "";
       origin.sort(triAyas);
-      origin.reverse().forEach((ele) => {
+      origin.forEach((ele) => {
         apendchild(ele);
       });
     })
