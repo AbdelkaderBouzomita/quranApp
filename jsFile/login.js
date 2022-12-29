@@ -9,7 +9,7 @@ const resetBtn = document.querySelector(".reset--btn")
 
 
 
-
+let suc = false;
 loginLink.addEventListener("click", function (e)
 {
   let valid = true;
@@ -49,5 +49,44 @@ loginLink.addEventListener("click", function (e)
     confirmPassWordError.textContent = "";
     confirmPw.classList.remove("back--red");
   }
+  let myHeaders = new Headers();
+  myHeaders.append(
+    "Authorization",
+    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWNhMGI0NGIxODM5MDdhZjkyNGY3MCIsImlhdCI6MTY3MjI1NzcxNywiZXhwIjoxNjgwMDMzNzE3fQ.7fUs0qDhD8OgELFGYdk75Fe1b3lTA_AcAUG1RYPCVag"
+  );
+  myHeaders.append("Content-Type", "application/json");
+  myHeaders.append(
+    "Cookie",
+    "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzYWMwYTNhNGIxODM5MDdhZjkyMThmNiIsImlhdCI6MTY3MjMwNjYxNiwiZXhwIjoxNjgwMDgyNjE2fQ.34XyNS83X7I7kqEw8e-bzs4Yz8fgZ46FKiCVVsCZx5U"
+  );
+
+  let raw = JSON.stringify({
+    email: email.value,
+    password: passWord.value,
+  });
+
+  let requestOptions = {
+    method: "POST",
+    headers: myHeaders,
+    body: raw,
+    redirect: "follow",
+  };
+
+  fetch("https://apitest.khouaja.live/v1/user/login", requestOptions)
+    .then((response) => response.json())
+    .then((result) => {
+      console.log(result);
+      console.log(result.status);
+      if (valid === true && result.status == "success") {
+        suc = true;
+      }
+    })
+    .catch((error) => console.log("error", error));
+  if (suc === true)
+  {
+    loginLink.setAttribute("href", "index.html");
+  }
 });
 
+//abdelkader@gmail.com
+//aaabbbccc
