@@ -60,6 +60,33 @@ function apendchild(a) {
   );
 }
 
+
+homeSearchInput.addEventListener("input", (e) => {
+  const value = e.target.value;
+  const allSourahs = document.querySelectorAll(".sourah--container");
+  allSourahs.forEach((el) => {
+    const firstSage = el.querySelector(".best-number").textContent;
+    const nameEng = el.querySelector(".best-sourah").textContent;
+    const isVisible =
+      firstSage.includes(value) || nameEng.toLowerCase().includes(value);
+    el.classList.toggle("hidden", !isVisible);
+  });
+});
+scrollBarSearch.addEventListener("input", (e) => {
+  const value = e.target.value;
+  const allSourahsFromScroll = document.querySelectorAll(".sourah--from--text");
+  allSourahsFromScroll.forEach((el) => {
+    const firstSage = el.querySelector(".idSourah").textContent;
+    const nameEng = el.textContent
+      .substring(el.textContent.indexOf(" "))
+      .trim();
+
+    const isVisible =
+      firstSage.includes(value) || nameEng.toLowerCase().includes(value);
+    el.classList.toggle("hidden", !isVisible);
+  });
+});
+
 const alldata = fetch(`https://apitest.khouaja.live./v1/quran`, {
   method: "GET",
 
@@ -153,7 +180,7 @@ const alldata = fetch(`https://apitest.khouaja.live./v1/quran`, {
           .then((res) => {
             loading = false;
             const [arrayOfAyah] = res.data.ayahs.slice(1);
-            console.log(res.data.ayahs.slice(1));
+           
             let Str = "";
             const allaya = res.data.ayahs.slice(1)
               .reverse()
@@ -217,9 +244,7 @@ const alldata = fetch(`https://apitest.khouaja.live./v1/quran`, {
                      setTimeout(() => {
                        spinner.classList.add("hidden");
                      }, "600");
-                    //  audio = getAudio(`https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/${el.number}.mp3`);
-                    // const audioElement = document.getElementById('audio');
-                    // console.log(audioElement)
+                    
                     let idSourahOfScrollBar = el.textContent.substring(
                       0,
                       el.textContent.indexOf(" ")
@@ -278,6 +303,7 @@ headsetBtn.addEventListener("click", function (e)
 });
 homeBtn.addEventListener("click", function (e)
 {
+  headsetBtn.classList.toggle("hidden")
    spinner.classList.remove("hidden");
    setTimeout(() => {
      spinner.classList.add("hidden");
@@ -289,33 +315,6 @@ homeBtn.addEventListener("click", function (e)
 logOut.addEventListener("click", function (e) {
   logOut.setAttribute("href", "login.html");
 });
-
-homeSearchInput.addEventListener("input", (e) => {
-  const value = e.target.value;
-
-  const allSourahs = document.querySelectorAll(".sourah--container")
-  allSourahs.forEach((el) =>
-  {
-   
-    const firstSage = el.querySelector(".best-number").textContent;
-    const nameEng = el.querySelector(".best-sourah").textContent;
-    
-
-    const isVisible =
-      firstSage.includes(value) ||
-      nameEng.toLowerCase().includes(value)
-  
-    el.classList.toggle("hidden",!isVisible)
-  
-  })
-
-});
-const alls = document.querySelectorAll(".sourah--container")
-alls.forEach((el) =>
-{ 
-  el.classList.remove("hidden");
-})
-
 
 function compare(a, b) {
   if (a.englishName < b.englishName) {
