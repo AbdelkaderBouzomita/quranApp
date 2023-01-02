@@ -19,9 +19,22 @@ const logOut = document.querySelector(".logout--btn");
 const homeBtn = document.querySelector(".home--btn");
 const headsetBtn = document.querySelector(".headset--btn");
 const audioSourah = document.querySelector(".audio");
+const scrollBarSearch = document.querySelector(".scroll-bar-search");
+const spinner = document.querySelector(".ldio-dmkndh94j8c");
+const homeSearchInput = document.querySelector(".input--search");
+const lastReadContent = document.querySelector(".sourat--opened--read");
+const lastListenedContent = document.querySelector(".sourat--opened--listened");
+let lastRead;
+let lastListened;
+lastReadContent.textContent = window.localStorage.lstRead;
+lastListenedContent.textContent = window.localStorage.lstlistened;
+console.log("this is ", homeSearchInput);
+let allSourahContainer;
 // let audio;
 let currentSoruah;
 console.log(audioSourah);
+let allSourahNumber = []
+let allSourah=[]
 
 let sourahsOfScrollBar = `<p><span>1</span> Al-fatiha</p>`;
 nameProfile.textContent = window.localStorage.namePerson;
@@ -35,12 +48,12 @@ function apendchild(a) {
     ` <div class="sourah--container">
            <div class="english-meaning">
              <div class="best-number">${a.number}</div>
-             <span>${a.englishName}</span>
+             <span class="best-sourah">${a.englishName}</span>
              <p>${a.englishNameTranslation}</p>
             </div>
              <div class="arabic-meaning">
               <i class="fa-regular fa-heart"></i>
-            <span>${a.name}</span>
+            <span class"arab--name">${a.name}</span>
             <p>${a.ayahsNumber} Ayas</p>
           </div>
          </div>`
@@ -61,13 +74,17 @@ const alldata = fetch(`https://apitest.khouaja.live./v1/quran`, {
     let origin = res.data;
     origin.reverse().map((el) => {
       apendchild(el);
+      
     });
-
+    
     sortByAlphabes.addEventListener("click", function (e) {
       allArrowSort.forEach((el) => el.classList.remove("rotation"));
       allSortMethod.forEach((el) => el.classList.remove("back-fff"));
       sortByAlphabes.classList.add("back-fff");
-
+       spinner.classList.remove("hidden");
+       setTimeout(() => {
+         spinner.classList.add("hidden");
+       }, "600");
       origin.sort(compare);
       sourahGrid.textContent = "";
       origin.reverse().map((e) => {
@@ -77,7 +94,10 @@ const alldata = fetch(`https://apitest.khouaja.live./v1/quran`, {
     });
     sortByNumber.addEventListener("click", function (e) {
       allArrowSort.forEach((el) => el.classList.remove("rotation"));
-
+       spinner.classList.remove("hidden");
+       setTimeout(() => {
+         spinner.classList.add("hidden");
+       }, "600");
       arrowNumber.classList.add("rotation");
       allSortMethod.forEach((el) => el.classList.remove("back-fff"));
       sortByNumber.classList.add("back-fff");
@@ -89,7 +109,10 @@ const alldata = fetch(`https://apitest.khouaja.live./v1/quran`, {
     });
     sortByAyahs.addEventListener("click", function (e) {
       allArrowSort.forEach((el) => el.classList.remove("rotation"));
-
+       spinner.classList.remove("hidden");
+       setTimeout(() => {
+         spinner.classList.add("hidden");
+       }, "600");
       arrowAyah.classList.add("rotation");
       allSortMethod.forEach((el) => el.classList.remove("back-fff"));
       sortByAyahs.classList.add("back-fff");
@@ -102,9 +125,17 @@ const alldata = fetch(`https://apitest.khouaja.live./v1/quran`, {
 
     let printaya = [];
     let loading = false;
-    const allSourahContainer = document.querySelectorAll(".sourah--container");
+    let allSourahContainer = document.querySelectorAll(".sourah--container");
     allSourahContainer.forEach((el) =>
-      el.addEventListener("click", function (e) {
+      el.addEventListener("click", function (e)
+      {
+        lastRead = el.querySelector(".best-sourah").textContent
+        window.localStorage.lstRead = lastRead;
+        lastReadContent.textContent = window.localStorage.lstRead;
+        spinner.classList.remove("hidden");
+        setTimeout(() => {
+        spinner.classList.add("hidden");
+        }, "600");
         const firstSage = el.querySelector(".best-number").textContent;
         loading = true;
         currentSoruah=Number(firstSage)
@@ -121,14 +152,15 @@ const alldata = fetch(`https://apitest.khouaja.live./v1/quran`, {
           .then((res) => res.json())
           .then((res) => {
             loading = false;
-            const [arrayOfAyah] = res.data.ayahs;
+            const [arrayOfAyah] = res.data.ayahs.slice(1);
+            console.log(res.data.ayahs.slice(1));
             let Str = "";
-            const allaya = res.data.ayahs
+            const allaya = res.data.ayahs.slice(1)
               .reverse()
               .forEach(
                 (elem) =>
-                  (Str = elem.numberInSurah + " " + elem.text + " " + Str)
-              );
+                  (Str = `${elem.text} (${elem.numberInSurah}) ${Str}`)
+            );
             middle.classList.add("hidden");
             item5.classList.remove("hidden");
             sourahText.textContent = Str;
@@ -147,18 +179,44 @@ const alldata = fetch(`https://apitest.khouaja.live./v1/quran`, {
               .then((res) => res.json())
               .then((res) => {
                 let origin = res.data;
-                origin.reverse().map((el) => {
+                origin.reverse().map((el) =>
+                {
+                  // allSourahNumber.push(el.number)
+                  // allSourah.push(`${el.englishName}@${el.number}`)
                   scrollBarContent.insertAdjacentHTML(
                     "afterbegin",
                     `<p class="sourah--from--text"><span class="idSourah">${el.number}</span>  ${el.englishName}</p>`
-                  );
-                });
-                const sourahFromScroll = document.querySelectorAll(
+                    );
+                  });
+                  if (scrollBarSearch.value!=false)
+                  {
+                    let scrollBarSearchValue = scrollBarSearch.value
+                    res.data.map(el =>
+                    {
+                      if (el.englishName.include(scrollBarSearchValue))
+                      {
+                        scrollBarContent.textContent = "";
+                        scrollBarContent.insertAdjacentHTML(
+                          "afterbegin",
+                          `<p class="sourah--from--text"><span class="idSourah">${el.number}</span>  ${el.englishName}</p>`
+                        );
+                     }
+                    })
+                    
+                  }
+                  const sourahFromScroll = document.querySelectorAll(
                   ".sourah--from--text"
                 );
                 sourahFromScroll.forEach((el) =>
                   el.addEventListener("click", function (e)
                   {
+                    lastRead = el.textContent.substring(el.textContent.indexOf(" "))
+                    window.localStorage.lstRead = lastRead;
+                    lastReadContent.textContent = window.localStorage.lstRead;
+                     spinner.classList.remove("hidden");
+                     setTimeout(() => {
+                       spinner.classList.add("hidden");
+                     }, "600");
                     //  audio = getAudio(`https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/${el.number}.mp3`);
                     // const audioElement = document.getElementById('audio');
                     // console.log(audioElement)
@@ -189,17 +247,13 @@ const alldata = fetch(`https://apitest.khouaja.live./v1/quran`, {
                         loading = false;
                         const [arrayOfAyah] = res.data.ayahs;
                         let Str = "";
-                        const allaya = res.data.ayahs
+                        const allaya = res.data.ayahs.slice(1)
                           .reverse()
                           .forEach(
                             (elem) =>
                               (Str =
-                                elem.numberInSurah +
-                                " " +
-                                elem.text +
-                                " " +
-                                Str)
-                          );
+                               `${elem.text} (${elem.numberInSurah}) ${Str}`)
+                          )
 
                         sourahText.textContent = Str;
                       });
@@ -210,11 +264,24 @@ const alldata = fetch(`https://apitest.khouaja.live./v1/quran`, {
       })
     );
   });
-headsetBtn.addEventListener("click", function (e) {
+headsetBtn.addEventListener("click", function (e)
+{
+  lastListened= lastRead;
+  window.localStorage.lstlistened = lastListened;
+  lastListenedContent.textContent = window.localStorage.lstlistened;
+   spinner.classList.remove("hidden");
+   setTimeout(() => {
+     spinner.classList.add("hidden");
+   }, "600");
   audioSourah.src = `https://cdn.islamic.network/quran/audio-surah/128/ar.alafasy/${currentSoruah}.mp3`;
   audioSourah.classList.toggle("hidden")
 });
-homeBtn.addEventListener("click", function (e) {
+homeBtn.addEventListener("click", function (e)
+{
+   spinner.classList.remove("hidden");
+   setTimeout(() => {
+     spinner.classList.add("hidden");
+   }, "600");
   scrollBar.classList.add("hidden");
   item5.classList.add("hidden");
   middle.classList.remove("hidden");
@@ -222,6 +289,33 @@ homeBtn.addEventListener("click", function (e) {
 logOut.addEventListener("click", function (e) {
   logOut.setAttribute("href", "login.html");
 });
+
+homeSearchInput.addEventListener("input", (e) => {
+  const value = e.target.value;
+
+  const allSourahs = document.querySelectorAll(".sourah--container")
+  allSourahs.forEach((el) =>
+  {
+   
+    const firstSage = el.querySelector(".best-number").textContent;
+    const nameEng = el.querySelector(".best-sourah").textContent;
+    
+
+    const isVisible =
+      firstSage.includes(value) ||
+      nameEng.toLowerCase().includes(value)
+  
+    el.classList.toggle("hidden",!isVisible)
+  
+  })
+
+});
+const alls = document.querySelectorAll(".sourah--container")
+alls.forEach((el) =>
+{ 
+  el.classList.remove("hidden");
+})
+
 
 function compare(a, b) {
   if (a.englishName < b.englishName) {
