@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap');
 * {
   box-sizing: border-box;
   margin: 0px;
@@ -5,20 +6,40 @@
   font-family: "Tajawal", sans-serif;
 }
 body {
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow-y: hidden;
   background-color: rgba(125, 166, 180, 0.522);
 }
 
 .gr--content {
   background-color: #fff;
   display: grid;
-  grid-template-columns: auto auto auto auto auto;
+  grid-template-columns: 90px auto auto auto 240px;
   gap: 30px;
-  margin: 9%;
+  margin: 7%;
+  width: 90vw;
   border-radius: 30px;
   height: 90vh;
+  position: relative;
+}
+
+.nav--bar--right{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2.5%;
+}
+.nav--bar--right img{
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  cursor: pointer;
+  background: #fff;
+  padding: 7px;
+  margin-left: 30px;
+  border-radius: 50%;
 }
 .scroll-bar {
   display: flex;
@@ -28,9 +49,9 @@ body {
   gap: 20px;
   width: 220px;
   overflow-y: scroll;
-
+  margin-bottom: 50px;
   order: 4;
-  display: none;
+  
 }
 .scroll-bar::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(112, 68, 68, 0.3);
@@ -123,26 +144,27 @@ body {
 
 .item5 {
   order: 6;
-  grid-column: span 2;
+  grid-column: span 3;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 40px;
   justify-content: start;
   overflow-y: scroll;
-  display: none;
+  margin-bottom: 50px;
 }
 .item5 span{
-  font-size: xx-large;
+  font-size: 40px;
   font-weight: 600;
 }
 .item5 p{
-  font-size: 22px;
+  font-size: 27px;
   font-weight: 500;
   line-height: 1.8;
   margin-left: 30px;
   margin-right: 50px;
   direction: rtl;
+  font-family: 'Amiri Quran', serif !important;
 }
 .logo {
   width: 40px;
@@ -194,9 +216,9 @@ body {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  gap: 350px;
   width: 90px;
   order: 2;
+  margin-bottom: 15px;
 }
 .menu--bar {
   display: flex;
@@ -213,6 +235,7 @@ body {
   background-color: #fff;
   border: none;
   cursor: pointer;
+  
 }
 .left--bar button img {
   width: 30px;
@@ -264,7 +287,6 @@ body {
   flex-direction: column;
   background-color: rgba(149, 149, 204, 0.346);
   overflow-y: scroll;
-  width: fit-content;
   border-top-left-radius: 33px;
   border-top-right-radius: 33px;
   order: 5;
@@ -303,7 +325,6 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 230px;
   height: 120px;
   background-color: #fff;
   border-radius: 11px;
@@ -373,10 +394,12 @@ body {
 }
 .sourah--grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, 186px);
+  grid-template-columns: repeat(auto-fill, 240px);
   padding: 10px;
-  row-gap: 20px;
-  column-gap: 50px;
+  row-gap: 17px;
+  column-gap: 14px;
+  justify-content: center;
+  align-items: center;
 }
 
 .rotation {
@@ -385,4 +408,10 @@ body {
 }
 .hidden {
   display: none;
+}
+.audio{
+  position:absolute;
+  bottom: 0px;
+  width: 100%;
+  left: 0px;
 }

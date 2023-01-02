@@ -34,13 +34,19 @@
             </p>
           </div>
         </div>
-        <div>
+        <div class="nav--bar--right">
           <input class="input--search" type="text" placeholder="search" />
+          <img
+        class="headset--btn hidden"
+        src="images/headphones_FILL0_wght500_GRAD0_opsz48.svg"
+        alt="not found"
+      />
         </div>
+       
       </div>
       <div class="left--bar">
         <div class="menu--bar">
-          <button>
+          <button class="home--btn">
             <img src="images/menu_book_FILL0_wght500_GRAD0_opsz48.svg" alt="" />
           </button>
           <button>
@@ -61,11 +67,11 @@
             <img src="images/settings_FILL0_wght500_GRAD0_opsz48.svg" alt="" />
           </button>
           <button>
-            <img src="images/logout_FILL0_wght500_GRAD0_opsz48.svg" alt="" />
+            <a class="logout--btn"><img src="images/logout_FILL0_wght500_GRAD0_opsz48.svg" alt="" /></a>
           </button>
         </div>
       </div>
-      <div class="item3 scroll-bar">
+      <div class="item3 scroll-bar hidden">
         <div class="scroll-bar-btns">
           <button>Surah</button>
           <button>Juz</button>
@@ -73,16 +79,6 @@
         </div>
         <div><input class="scroll-bar-search" type="text" placeholder="Search Search"></div>
         <div class="scroll-bar-content">
-         <p><span>1</span> Al-fatiha</p>
-         <p><span>1</span> Al-fatiha</p>
-         <p><span>1</span> Al-fatiha</p>
-         
-         
-         
-         
-         
-       
-         
         </div>
       </div>
 
@@ -124,17 +120,10 @@
         </section>
         <section class="sourah--grid"></section>
       </main>
-      <div class="item5">
+      <div class="item5 hidden">
         <span> بِسْمِ اللَّـهِ الرَّحْمَـٰنِ الرَّحِيمِ</span>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Odio, expedita. A dolore illo eos itaque fuga rerum accusantium atque autem? Aperiam, aliquid doloremque nostrum hic maxime harum voluptatem distinctio officia?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam est asperiores dicta maiores iure, nam, cupiditate sint maxime laboriosam fugit sit culpa perspiciatis quas minus at, quae nesciunt atque ex?
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fugiat, eos eveniet quos, dignissimos maxime ducimus fuga aliquid corrupti amet repellendus quae. Architecto voluptatum explicabo asperiores cum quam, tempore numquam eligendi?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis quisquam laborum illum quidem eligendi esse? Vel amet qui officia, perspiciatis atque ipsam, reiciendis culpa molestiae laboriosam, omnis nihil rerum nostrum.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis cupiditate soluta impedit labore suscipit totam quidem nemo iste? Cumque repellat tempora sunt blanditiis incidunt dolore dolores deleniti similique ut corrupti!
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo, in tempora exercitationem, iusto repellendus, vero numquam non eius provident architecto enim dolorem. A, nemo molestias quaerat laborum atque veritatis impedit.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. In sunt quidem cupiditate. Aliquam nam deleniti eligendi autem laboriosam? Sapiente debitis blanditiis itaque quidem adipisci autem expedita recusandae, animi doloremque illo.
-        </p>
-        
+        <p class="sourah--text"></p>
+        <audio src="" controls class="audio hidden"></audio>
       </div>
       <div class="right--bar item6">
         <div class="right--options profile--owner">
@@ -173,6 +162,6 @@
       </div>
     </div>
 
-    <script src="/jsFile/code.js"></script>
+  <script src="/jsFile/code.js"></script>
   </body>
 </html>

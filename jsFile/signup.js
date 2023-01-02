@@ -93,6 +93,7 @@ signupBtn.addEventListener("click", function (e) {
         suc = true;
       }
     })
+
     .catch((error) => console.log("error", error));
   if (suc === true) {
     window.localStorage.namePerson = namep.value;
@@ -100,7 +101,7 @@ signupBtn.addEventListener("click", function (e) {
     window.localStorage.email = email.value;
 
     signupBtn.setAttribute("href", "index.html");
-  }
+  } 
 });
 
 function isAlpha(ch) {

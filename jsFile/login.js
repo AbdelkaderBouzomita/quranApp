@@ -6,7 +6,7 @@ const passWordError = document.querySelector(".err--pass");
 const confirmPassWordError = document.querySelector(".err--confipass");
 const loginLink = document.querySelector(".login--link");
 const resetBtn = document.querySelector(".reset--btn");
-
+let loading = false;
 let suc = false;
 loginLink.addEventListener("click", function (e) {
   let valid = true;
@@ -22,7 +22,7 @@ loginLink.addEventListener("click", function (e) {
     emailError.textContent = "";
     email.classList.remove("back--red");
   }
-  if (passWord.value.length < 8) {
+  if (passWord.value.length < 4) {
     valid = false;
 
     passWordError.textContent = "password invalid!!";
@@ -62,8 +62,10 @@ loginLink.addEventListener("click", function (e) {
     body: raw,
     redirect: "follow",
   };
-
+  // if (loading == true) document.querySelector(".lds-roller").classList.remove("hidden");
   fetch("https://apitest.khouaja.live/v1/user/login", requestOptions)
+     
+   
     .then((response) => response.json())
     .then((result) => {
       console.log(result);
@@ -77,10 +79,21 @@ loginLink.addEventListener("click", function (e) {
         //?or
         //? window.localStorage["email"]=email.value;
         suc = true;
-      }
+      } 
+      
     })
     .catch((error) => console.log("error", error));
-  if (suc === true) {
+  
+  if (suc === true)
+  {
     loginLink.setAttribute("href", "index.html");
   }
-});
+    // } else
+    // { alert("Invalid Data")
+    //   // email.classList.add("back--red")
+    //   // passWord.classList.add("back--red")
+    //   // emailError.textContent = "Invalid Data !!"
+    //   // passWordError.textContent="Invalid Data !!"
+    // }
+  });
+  
