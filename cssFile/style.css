@@ -147,7 +147,7 @@ body {
 
 .item5 {
   order: 6;
-  grid-column: span 3;
+  grid-column: span 4;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -503,4 +503,93 @@ body {
 }
 .hidden {
   display: none;
+}
+@media only screen and (max-width: 1200px) {
+ .item6{
+  display: none;
+ }
+ .item5{
+  grid-column: span 3 !important;
+ }
+ .middle--container{
+  grid-column: span 4;
+ }
+ .sorted--bar{
+  gap: 3px;
+ }
+ .sort--way{
+  width: -60%;
+  padding: -30%;
+  font-size: 82%;
+  padding: 7px;
+ }
+ .sourah--grid{
+  grid-template-columns: repeat(auto-fill, 190px);
+ }
+ .sourah--container{
+  height: 100px;
+ }
+ .item5 span{
+  font-size: 140%;
+  text-align: center;
+ }
+ .item5 p{
+  font-size: 130%;
+ }
+ .left--bar{
+  width: 70%;
+ }
+ .left--bar button{
+  width: 10px;
+ }
+ .left--bar button img {
+  width: 20px;
+}
+.scroll-bar{
+  width: 130px;
+}
+.scroll-bar-btns{
+  width: 90% !important;
+  gap: 11px;
+}
+.scroll-bar-btns button{
+  font-size: 88%;
+}
+.scroll-bar-search{
+  width: 90% !important;
+  font-size: 16px ;
+}
+::placeholder{
+  font-size: 80%;
+}
+.sourah--from--text{
+font-size: 79%;
+}
+.gr--content{
+  column-gap: 20px;
+}
+.input--search{
+  display: none;
+}
+.headset--btn{
+  width: 40px;
+}
+.audio{
+  height: 40px;
+}
+
+}
+
+@media only screen and (max-width: 605px) {
+
+ .sorted--bar{
+  flex-direction: column;
+  gap: 0px;
+ }
+ .sort--way{
+  margin-top: 8px;
+ }
+.item5 p{
+  font-size: 12px !important;
+}
 }
