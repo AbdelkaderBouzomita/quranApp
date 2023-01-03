@@ -504,6 +504,12 @@ body {
 .hidden {
   display: none;
 }
+
+
+/* ---------------------media query -------------------------- */
+
+
+
 @media only screen and (max-width: 1200px) {
  .item6{
   display: none;
