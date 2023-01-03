@@ -230,8 +230,9 @@ function sourahContentEvent()
           .then((res) => res.json())
           .then((res) => {
             loading = false;
-            const [arrayOfAyah] = res.data.ayahs.slice(1);
-
+            const [arrayOfAyah] = res.data.ayahs
+            
+            firstayah = res.data.ayahs[0].text.substring(38)
             let Str = "";
             const allaya = res.data.ayahs
               .slice(1)
@@ -241,6 +242,7 @@ function sourahContentEvent()
               );
             middle.classList.add("hidden");
             item5.classList.remove("hidden");
+            Str=firstayah+" "+Str
             sourahText.textContent = Str;
             scrollBar.classList.remove("hidden");
             item5.style.gridColumn = "span 2";
@@ -315,6 +317,8 @@ function sourahContentEvent()
                         loading = false;
                         const [arrayOfAyah] = res.data.ayahs;
                         let Str = "";
+                        firstayah=res.data.ayahs[0].text.substring(38)
+                        
                         const allaya = res.data.ayahs
                           .slice(1)
                           .reverse()
@@ -322,7 +326,7 @@ function sourahContentEvent()
                             (elem) =>
                               (Str = `${elem.text} (${elem.numberInSurah}) ${Str}`)
                           );
-
+                        Str=firstayah+" "+Str
                         sourahText.textContent = Str;
                       });
                   })
