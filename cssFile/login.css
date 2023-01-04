@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
-  font-family: "Tajawal", sans-serif;
+  font-family: 'Tajawal', sans-serif;
 }
 
 body {
@@ -117,7 +117,7 @@ div a {
   transform-origin: 40px 40px;
 }
 .lds-roller div:after {
-  content: " ";
+  content: ' ';
   display: block;
   position: absolute;
   width: 7px;
@@ -190,6 +190,6 @@ div a {
     transform: rotate(360deg);
   }
 }
-.hidden{
+.hidden {
   display: none;
 }

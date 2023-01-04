@@ -2,7 +2,7 @@
   box-sizing: border-box;
   margin: 0px;
   padding: 0px;
-  font-family: "Tajawal", sans-serif;
+  font-family: 'Tajawal', sans-serif;
 }
 
 body {
@@ -21,7 +21,7 @@ body {
   align-items: center;
   background-color: rgb(244, 247, 247);
   width: 360px;
-  height:fit-content;
+  height: fit-content;
   border-radius: 29px;
   gap: 11px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
