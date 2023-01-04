@@ -17,12 +17,12 @@ body {
 .gr--content {
   background-color: #fff;
   display: grid;
-  grid-template-columns: 90px auto auto auto 240px;
+  grid-template-columns: 7rem auto auto auto 240px;
   gap: 30px;
   margin: 7%;
   width: 90vw;
   border-radius: 30px;
-  height: 90vh;
+  height: 80vh;
   position: relative;
 }
 
@@ -524,6 +524,9 @@ body {
 /* ---------------------media query -------------------------- */
 
 @media only screen and (max-width: 1200px) {
+  .gr--content{
+    grid-template-columns: 5rem auto auto auto 240px;
+  }
   .item6 {
     display: none;
   }
@@ -556,7 +559,7 @@ body {
     font-size: 130%;
   }
   .left--bar {
-    width: 70%;
+    width: 100%;
   }
   .left--bar button {
     width: 10px;
@@ -588,7 +591,8 @@ body {
     column-gap: 20px;
   }
   .input--search {
-    display: none;
+    width: 80%;
+    height: 80%;
   }
   .headset--btn {
     width: 40px;
@@ -599,6 +603,16 @@ body {
 }
 
 @media only screen and (max-width: 605px) {
+  .gr--content{
+    grid-template-columns: 2.4rem auto auto auto 130px;
+    gap: 0px 10px;
+  }
+  .sourah--grid {
+    grid-template-columns: repeat(auto-fill, 180px);
+  }
+  .english-meaning{
+    font-size: 16px !important;
+  }
   .sorted--bar {
     flex-direction: column;
     gap: 0px;
@@ -608,5 +622,30 @@ body {
   }
   .item5 p {
     font-size: 12px !important;
+  }
+  .item5 span{
+    font-size: small;
+  }
+  .logo{
+    width: 25px;
+  }
+  .logo--quran{
+    font-size: x-small;
+  }
+  .logo--hadith{
+    font-size: x-small;
+  }
+  .input--search{
+    width: 40%;
+    height: 30%;
+    font-size: 15px;
+  }
+  .item5{
+    gap: 10px;
+  }
+  .sourah--text{
+    margin: 0px;
+    margin-right: 15px !important;
+    margin-left: 15px !important;
   }
 }
