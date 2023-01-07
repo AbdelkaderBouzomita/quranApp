@@ -15,7 +15,8 @@ signupBtn.addEventListener('click', function (e) {
   let valid = true
   if (namep.value.length < 3 || isAlpha(namep.value) == false) {
     valid = false
-    nameError.textContent = 'Name invalid!!'
+    nameError.textContent =
+      'must contain at least 4 char !!'
     namep.classList.add('back--red')
   } else {
     nameError.textContent = ''
@@ -23,7 +24,7 @@ signupBtn.addEventListener('click', function (e) {
   }
   if (phone.value.length != 8) {
     valid = false
-    phoneError.textContent = 'phone invalid!!'
+    phoneError.textContent = 'must contain 8 num!!'
     phone.classList.add('back--red')
   } else {
     phoneError.textContent = ''
@@ -35,7 +36,7 @@ signupBtn.addEventListener('click', function (e) {
   ) {
     valid = false
 
-    emailError.textContent = 'email invalid!!'
+    emailError.textContent = 'invalid email format !!'
     email.classList.add('back--red')
   } else {
     emailError.textContent = ''
@@ -44,7 +45,7 @@ signupBtn.addEventListener('click', function (e) {
   if (passWord.value.length < 8) {
     valid = false
 
-    passWordError.textContent = 'password invalid!!'
+    passWordError.textContent = 'At least 8 characters !!'
     passWord.classList.add('back--red')
   } else {
     passWordError.textContent = ''
@@ -53,7 +54,7 @@ signupBtn.addEventListener('click', function (e) {
   if (confirmPw.value.trim() === '' || confirmPw.value !== passWord.value) {
     valid = false
 
-    confirmPassWordError.textContent = 'password invalid!!'
+    confirmPassWordError.textContent = 'invalid confirmation !!'
     confirmPw.classList.add('back--red')
   } else {
     confirmPassWordError.textContent = ''
@@ -100,8 +101,9 @@ signupBtn.addEventListener('click', function (e) {
     window.localStorage.password = passWord.value
     window.localStorage.email = email.value
 
-    signupBtn.setAttribute('href', 'index.html')
+    signupBtn.setAttribute('href', 'login.html')
   }
+ 
 })
 
 function isAlpha(ch) {

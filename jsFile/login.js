@@ -77,6 +77,9 @@ loginLink.addEventListener('click', function (e) {
     .catch((error) => console.log('error', error))
 
   if (suc === true) {
-    loginLink.setAttribute('href', 'index.html')
+    loginLink.setAttribute('href', 'code.html')
+  } else
+  {
+    emailError.textContent = "this account doesn't exist !!";
   }
 })

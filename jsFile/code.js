@@ -200,56 +200,76 @@ function triAyas(a, b) {
 function sourahContentEvent() {
   allSourahContainer = document.querySelectorAll('.sourah--container')
   allSourahContainer.forEach((el) =>
-    el.addEventListener('click', function (e)
-    {
-      scrollBarContent.innerHTML=""
-      lastRead = el.querySelector('.best-sourah').textContent
-      window.localStorage.lstRead = lastRead
-      lastReadContent.textContent = window.localStorage.lstRead
-      spinner.classList.remove('hidden')
-      setTimeout(() => {
-        spinner.classList.add('hidden')
-      }, '600')
-      const firstSage = el.querySelector('.best-number').textContent
-      loading = true
-      currentSoruah = Number(firstSage)
-      const ldata = fetch(
-        `https://apitest.khouaja.live./v1/quran?surah=${Number(firstSage)}`,
-        {
-          method: 'GET',
-          headers: {
-            'Content-type': 'application/json',
-            Authorization: `Bearer ${window.localStorage.getItem('token')}`,
-          },
-        }
-      )
-        .then((res) => res.json())
-        .then((res) => {
-          loading = false
-          const [arrayOfAyah] = res.data.ayahs
-
-          firstayah = res.data.ayahs[0].text.substring(38)
-          let Str = ''
-          const allaya = res.data.ayahs
-            .slice(1)
-            .reverse()
-            .forEach(
-              (elem) => (Str = `${elem.text} (${elem.numberInSurah}) ${Str}`)
-            )
-          middle.classList.add('hidden')
-          item5.classList.remove('hidden')
-          Str = firstayah + ' ' + Str
-          sourahText.textContent = Str
-          scrollBar.classList.remove('hidden')
-          item5.style.gridColumn = 'span 2'
-          headsetBtn.classList.remove('hidden')
-          const sourahs = fetch(`https://apitest.khouaja.live./v1/quran`, {
+  el.addEventListener('click', function (e) {
+    if (e.target.classList.contains('fa-heart')) {
+      allSourahContainer.forEach((el) => {
+        el.querySelector('.fa-heart').addEventListener('click', function (e) {
+          const [arrClass] = e.target.classList
+      
+          if (arrClass === 'fa-regular') {
+            e.target.removeAttribute('class')
+            e.target.setAttribute('class', 'fa-solid fa-heart')
+            e.target.style.color = 'green'
+            spinner.classList.remove('hidden')
+            setTimeout(() => {
+              spinner.classList.add('hidden')
+            }, '200')
+          } else {
+            e.target.removeAttribute('class')
+            e.target.setAttribute('class', 'fa-regular fa-heart')
+            e.target.style.color = 'green'
+          }
+        })
+      })
+    } else {
+      scrollBarContent.innerHTML = ''
+        lastRead = el.querySelector('.best-sourah').textContent
+        window.localStorage.lstRead = lastRead
+        lastReadContent.textContent = window.localStorage.lstRead
+        spinner.classList.remove('hidden')
+        setTimeout(() => {
+          spinner.classList.add('hidden')
+        }, '600')
+        const firstSage = el.querySelector('.best-number').textContent
+        loading = true
+        currentSoruah = Number(firstSage)
+        const ldata = fetch(
+          `https://apitest.khouaja.live./v1/quran?surah=${Number(firstSage)}`,
+          {
             method: 'GET',
             headers: {
               'Content-type': 'application/json',
               Authorization: `Bearer ${window.localStorage.getItem('token')}`,
             },
-          })
+          }
+        )
+          .then((res) => res.json())
+          .then((res) => {
+            loading = false
+            const [arrayOfAyah] = res.data.ayahs
+
+            firstayah = res.data.ayahs[0].text.substring(38)
+            let Str = ''
+            const allaya = res.data.ayahs
+              .slice(1)
+              .reverse()
+              .forEach(
+                (elem) => (Str = `${elem.text} (${elem.numberInSurah}) ${Str}`)
+              )
+            middle.classList.add('hidden')
+            item5.classList.remove('hidden')
+            Str = firstayah + ' ' + Str
+            sourahText.textContent = Str
+            scrollBar.classList.remove('hidden')
+            item5.style.gridColumn = 'span 2'
+            headsetBtn.classList.remove('hidden')
+            const sourahs = fetch(`https://apitest.khouaja.live./v1/quran`, {
+              method: 'GET',
+              headers: {
+                'Content-type': 'application/json',
+                Authorization: `Bearer ${window.localStorage.getItem('token')}`,
+              },
+            })
             .then((res) => res.json())
             .then((res) => {
               let origin = res.data
@@ -257,99 +277,80 @@ function sourahContentEvent() {
                 scrollBarContent.insertAdjacentHTML(
                   'afterbegin',
                   `<p class="sourah--from--text"><span class="idSourah">${el.number}</span>  ${el.englishName}</p>`
+                  )
+                })
+                if (scrollBarSearch.value != false) {
+                  let scrollBarSearchValue = scrollBarSearch.value
+                  res.data.map((el) => {
+                    if (el.englishName.include(scrollBarSearchValue)) {
+                      scrollBarContent.textContent = ''
+                      scrollBarContent.insertAdjacentHTML(
+                        'afterbegin',
+                        `<p class="sourah--from--text"><span class="idSourah">${el.number}</span>  ${el.englishName}</p>`
+                      )
+                    }
+                  })
+                }
+                const sourahFromScroll = document.querySelectorAll(
+                  '.sourah--from--text'
+                )
+                sourahFromScroll.forEach((el) =>
+                  el.addEventListener('click', function (e) {
+                    lastRead = el.textContent.substring(
+                      el.textContent.indexOf(' ')
+                    )
+                    window.localStorage.lstRead = lastRead
+                    lastReadContent.textContent = window.localStorage.lstRead
+                    spinner.classList.remove('hidden')
+                    setTimeout(() => {
+                      spinner.classList.add('hidden')
+                    }, '600')
+
+                    let idSourahOfScrollBar = el.textContent.substring(
+                      0,
+                      el.textContent.indexOf(' ')
+                    )
+                    currentSoruah = Number(idSourahOfScrollBar)
+
+                    const ldata = fetch(
+                      `https://apitest.khouaja.live./v1/quran?surah=${Number(
+                        idSourahOfScrollBar
+                      )}`,
+                      {
+                        method: 'GET',
+
+                        headers: {
+                          'Content-type': 'application/json',
+
+                          Authorization: `Bearer ${window.localStorage.getItem(
+                            'token'
+                          )}`,
+                        },
+                      }
+                    )
+                      .then((res) => res.json())
+                      .then((res) => {
+                        loading = false
+                        const [arrayOfAyah] = res.data.ayahs
+                        let Str = ''
+                        firstayah = res.data.ayahs[0].text.substring(38)
+
+                        const allaya = res.data.ayahs
+                          .slice(1)
+                          .reverse()
+                          .forEach(
+                            (elem) =>
+                              (Str = `${elem.text} (${elem.numberInSurah}) ${Str}`)
+                          )
+                        Str = firstayah + ' ' + Str
+                        sourahText.textContent = Str
+                      })
+                  })
                 )
               })
-              if (scrollBarSearch.value != false) {
-                let scrollBarSearchValue = scrollBarSearch.value
-                res.data.map((el) => {
-                  if (el.englishName.include(scrollBarSearchValue)) {
-                    scrollBarContent.textContent = ''
-                    scrollBarContent.insertAdjacentHTML(
-                      'afterbegin',
-                      `<p class="sourah--from--text"><span class="idSourah">${el.number}</span>  ${el.englishName}</p>`
-                    )
-                  }
-                })
-              }
-              const sourahFromScroll = document.querySelectorAll(
-                '.sourah--from--text'
-              )
-              sourahFromScroll.forEach((el) =>
-                el.addEventListener('click', function (e) {
-                  lastRead = el.textContent.substring(
-                    el.textContent.indexOf(' ')
-                  )
-                  window.localStorage.lstRead = lastRead
-                  lastReadContent.textContent = window.localStorage.lstRead
-                  spinner.classList.remove('hidden')
-                  setTimeout(() => {
-                    spinner.classList.add('hidden')
-                  }, '600')
-
-                  let idSourahOfScrollBar = el.textContent.substring(
-                    0,
-                    el.textContent.indexOf(' ')
-                  )
-                  currentSoruah = Number(idSourahOfScrollBar)
-
-                  const ldata = fetch(
-                    `https://apitest.khouaja.live./v1/quran?surah=${Number(
-                      idSourahOfScrollBar
-                    )}`,
-                    {
-                      method: 'GET',
-
-                      headers: {
-                        'Content-type': 'application/json',
-
-                        Authorization: `Bearer ${window.localStorage.getItem(
-                          'token'
-                        )}`,
-                      },
-                    }
-                  )
-                    .then((res) => res.json())
-                    .then((res) => {
-                      loading = false
-                      const [arrayOfAyah] = res.data.ayahs
-                      let Str = ''
-                      firstayah = res.data.ayahs[0].text.substring(38)
-
-                      const allaya = res.data.ayahs
-                        .slice(1)
-                        .reverse()
-                        .forEach(
-                          (elem) =>
-                            (Str = `${elem.text} (${elem.numberInSurah}) ${Str}`)
-                        )
-                      Str = firstayah + ' ' + Str
-                      sourahText.textContent = Str
-                    })
-                })
-              )
-            })
-        })
+          })
+      }
     })
   )
 
-  allSourahContainer.forEach((el) => {
-    el.querySelector('.fa-heart').addEventListener('mouseover', function (e) {
-      const [arrClass] = e.target.classList
-
-      if (arrClass === 'fa-regular') {
-        e.target.removeAttribute('class')
-        e.target.setAttribute('class', 'fa-solid fa-heart')
-        e.target.style.color = 'green'
-        spinner.classList.remove('hidden')
-        setTimeout(() => {
-          spinner.classList.add('hidden')
-        }, '200')
-      } else {
-        e.target.removeAttribute('class')
-        e.target.setAttribute('class', 'fa-regular fa-heart')
-        e.target.style.color = 'green'
-      }
-    })
-  })
 }
-s
