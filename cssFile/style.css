@@ -17,8 +17,8 @@ body {
 .gr--content {
   background-color: #fff;
   display: grid;
-  grid-template-columns: 7rem auto auto auto 240px;
-  gap: 30px;
+  grid-template-columns: 4rem auto auto auto 240px;
+  gap: 0px 30px ;
   margin: 7%;
   width: 90vw;
   border-radius: 30px;
@@ -177,6 +177,7 @@ body {
   align-items: center;
   justify-content: space-between;
   grid-column-end: span 5;
+  height: 90px;
 }
 .logo--img--text {
   display: flex;
@@ -605,7 +606,7 @@ body {
 @media only screen and (max-width: 605px) {
   .gr--content{
     grid-template-columns: 2.4rem auto auto auto 130px;
-    gap: 0px 10px;
+    gap: 0px 0px;
   }
   .sourah--grid {
     grid-template-columns: repeat(auto-fill, 180px);
@@ -640,12 +641,66 @@ body {
     height: 30%;
     font-size: 15px;
   }
+  ::placeholder{
+    font-size: 60%;
+    padding-left: 4px;
+  }
   .item5{
     gap: 10px;
   }
   .sourah--text{
     margin: 0px;
     margin-right: 15px !important;
-    margin-left: 15px !important;
+    margin-left: 1px !important;
   }
+  .best-number{
+    width: 22px !important;
+    height: 22px !important;
+    font-size: 65% !important;
+  }
+  .best-sourah{
+    font-size: 13px !important;
+    
+  }
+  .english-meaning p{
+    font-size: 80%;
+  }
+  .arab--name{
+    font-size: 3px !important;
+  }
+  .arabic-meaning p{
+    font-size: 70%;
+  }
+  .arabic-meaning span{
+    font-size: 50%;
+    direction: rtl;
+  }
+  .arabic-meaning i{
+    font-size: 115%;
+  }
+  .logo--img--text{
+    justify-content: space-between;
+    gap: 0px;
+    width: 150px;
+  }
+  .logo{
+    margin-right: 0px;
+    margin-left: 15px;
+  }
+  .logo-container{
+    width: fit-content;
+  }
+  .middle--container{
+    gap: 0px ;
+  }
+  .scroll-bar{
+    width: 87px !important;
+  }
+  .scroll-bar-btns{
+    display: none;
+  }
+  .sourah--from--text{
+    font-size: 65%;
+  }
+ 
 }

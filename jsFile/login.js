@@ -6,6 +6,8 @@ const passWordError = document.querySelector('.err--pass')
 const confirmPassWordError = document.querySelector('.err--confipass')
 const loginLink = document.querySelector('.login--link')
 const resetBtn = document.querySelector('.reset--btn')
+const spinner = document.querySelector('.ldio-dmkndh94j8c')
+console.log(spinner);
 let loading = false
 let suc = false
 loginLink.addEventListener('click', function (e) {
@@ -65,21 +67,32 @@ loginLink.addEventListener('click', function (e) {
   fetch('https://apitest.khouaja.live/v1/user/login', requestOptions)
     .then((response) => response.json())
     .then((result) => {
-      console.log(result)
-      console.log(result.status)
-      if (valid === true && result.status == 'success') {
+     
+      if ((valid === true) && (result.status == 'success'))
+      {
+         
+        emailError.textContent="";
         window.localStorage.token = result.token
         window.localStorage.setItem('email', email.value)
         window.localStorage.setItem('password', passWord.value)
-        suc = true
+        window.location.assign("code.html")
+        setTimeout(() => {
+          spinner.classList.toggle('hidden')
+        }, '1000')
+      } else if (valid === true )
+      {
+        emailError.textContent = 'account not exist!!!!'
       }
     })
-    .catch((error) => console.log('error', error))
-
-  if (suc === true) {
-    loginLink.setAttribute('href', 'code.html')
-  } else
-  {
-    emailError.textContent = "this account doesn't exist !!";
-  }
+  //   .catch((error) => console.log('error', error))
+  // console.log(suc);
+  // if (suc === true)
+  // {
+  //    window.location.assign("code.html")
+  //   // loginLink.setAttribute('href', 'code.html')
+  // } if (suc === false)
+  // {
+  //   emailError.textContent = "account not exist!!!!"
+  //   return false
+  // }
 })

@@ -91,18 +91,16 @@ signupBtn.addEventListener('click', function (e) {
       console.log(result)
       console.log(result.status)
       if (valid === true && result.status == 'success') {
-        suc = true
+        
+         window.localStorage.namePerson = namep.value
+         window.localStorage.password = passWord.value
+        window.localStorage.emaiignupBtn
+        window.location.assign("login.html")
       }
     })
 
     .catch((error) => console.log('error', error))
-  if (suc === true) {
-    window.localStorage.namePerson = namep.value
-    window.localStorage.password = passWord.value
-    window.localStorage.email = email.value
-
-    signupBtn.setAttribute('href', 'login.html')
-  }
+ 
  
 })
 
